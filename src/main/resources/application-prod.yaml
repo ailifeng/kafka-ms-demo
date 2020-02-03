@@ -1,0 +1,4 @@
+
+kafka:
+  controller:
+    status: prod-good

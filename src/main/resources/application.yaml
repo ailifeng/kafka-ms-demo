@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: pg1.vpc.cloudera.com:9092
+      #function.definition: testSink1
+
+      kafka.bindings.people-out.producer:
+        configuration:
+          client.id: producer-people
+      kafka.bindings.people-in.consumer:
+        autoCommitOffset: false
+      bindings:
+      #  testSink-in-0:
+      #    destination: t1
+        greetings-in:
+          destination: greetings
+          contentType: application/json
+        greetings-out:
+          destination: greetings
+          contentType: application/json
+        people-in:
+          destination: people
+          group: consumer-group-people
+          #contentType: application/json
+        people-out:
+          destination: people
+          #contentType: application/json
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+
