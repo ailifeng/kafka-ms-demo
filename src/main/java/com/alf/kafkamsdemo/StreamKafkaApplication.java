@@ -16,20 +16,5 @@ public class StreamKafkaApplication {
         SpringApplication.run(StreamKafkaApplication.class, args);
     }
 
-    /*
-    @Bean
-    public Function<String, String> uppercase() {
-        return value -> {
-            System.out.println("Received: " + value);
-            return value.toUpperCase();
-        };
-    }
-     */
-
-    @Bean
-    public Consumer<String> testSink() {
-        return payload -> logger.info("Data received: " + payload);
-
-    }
 }
 
