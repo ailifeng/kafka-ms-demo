@@ -21,3 +21,7 @@ StreamKafkaApplciation - application class
 StreamsConfig - Stream configuration class
 ```
 
+#### health API
+```
+http://localhost:8080/actuator/health
+```
