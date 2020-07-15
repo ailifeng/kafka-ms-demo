@@ -4,6 +4,14 @@ spring:
       kafka:
         binder:
           brokers: pg1.vpc.cloudera.com:9092
+          requiredAcks: -1
+          producerProperties:
+            retries: 3
+            enable.idempotence: true
+            max.in.flight.requests.per.connection: 2
+            delivery.timeout.ms: 20000
+            request.timeout.ms: 10000
+
 
       kafka.bindings.people-out.producer:
         configuration:
@@ -28,10 +36,13 @@ spring:
         people-in:
           destination: people
           group: consumer-group-people
-          #contentType: application/json
         people-out:
           destination: people
+          producer:
+            sync: true
+
           #contentType: application/json
+
   profiles:
     active: dev
 
